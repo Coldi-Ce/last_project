@@ -1,0 +1,83 @@
+body{
+	display: flex;
+	flex-direction: column;
+	max-width: 1400px;
+	margin: 0 auto;
+	justify-content: space-between;
+}
+
+
+.wrapper{
+	background-color: rgba(255, 216, 0, 0.5);;
+	border: 1px solid rgba(255, 216, 0, 0.5);;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	min-height: 80px;
+}
+
+
+.shapka{
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 20px;
+	margin-left: 50px;
+	margin-right: 50px;
+	margin-bottom: 20px;
+	font-size: 18px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+}
+
+.logo{
+	font-size: 20px;
+	max-width: 180px;
+}
+
+.logo2{
+	font-size: 16px;
+}
+
+.menu{
+	flex-basis: 600px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logo1, .logo2, .about, .projects, .chat, .login{
+	color: black;
+}
+
+.logo:first-letter{
+	color: red;
+	font-size: 24px;
+}
+
+
+.wrapper2{
+	min-height: 150px;
+	background-color: rgba(0, 33, 53, 0.2);
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+.podval{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	padding-top: 75px;
+}
+
+.develop{
+	color: rgba(0, 0, 0, 0.8);
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+}
+
+
+.info_body{
+	border: 2px solid black;
+}
