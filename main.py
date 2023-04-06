@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, make_response, request, sess
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from data.Codes import Codes
 from data.users import User
+from data.Topic import Topic
 import datetime
 
 from forms.user import RegisterForm, LoginForm
@@ -25,15 +26,32 @@ def load_user(user_id):
 
 
 
-@app.route("/")
-def index():
+@app.route("/codes")
+def code():
     db_sess = db_session.create_session()
     if current_user.is_authenticated:
         codes = db_sess.query(Codes).filter(
             (Codes.user == current_user) | (Codes.is_private != True))
     else:
         codes = db_sess.query(Codes).filter(Codes.is_private != True)
-    return render_template("index.html", codes=codes)
+    return render_template("code.html", codes=codes)
+
+@app.route("/topics")
+def topics():
+    db_sess = db_session.create_session()
+    topics = db_sess.query(Topic).filter()
+    return render_template("topics.html", topics=topics)
+
+
+@app.route('/topic/<int:id>')
+def top(id):
+    db_sess = db_session.create_session()
+    if current_user.is_authenticated:
+        codes = db_sess.query(Codes).filter(
+            ((Codes.user == current_user) | (Codes.is_private != True)) and Codes.topic.id == id)
+    else:
+        codes = db_sess.query(Codes).filter((Codes.is_private != True) and Codes.topic.id == id)
+    return render_template("code.html", codes=codes)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -104,6 +122,16 @@ def login():
 def logout():
     logout_user()
     return redirect("/")
+
+
+@app.route('/codes/<int:id>', methods=['GET', 'POST'])
+def ed_wt(id):
+    db_sess = db_session.create_session()
+    code = db_sess.query(Codes).filter(Codes.id == id).first()
+    with open("code.py", "w") as myfile:
+        myfile.write(code.script)
+
+    return render_template('.html', title=f'код{id}')
 
 
 

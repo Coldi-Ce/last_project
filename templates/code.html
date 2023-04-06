@@ -6,10 +6,13 @@
 <div class="col-md6 border rounded">
     <h2>{{item.title}}</h2>
     <div>
-        {{item.script}}
-    </div>
-    <div>
         Автор - {{item.user.name}}, Дата написания - {{item.created_date}}
+
+    </div>
+        <div>
+        <a href="/codes/{{ item.id }}" class="btn btn-secondary">
+            Открыть
+        </a>
     </div>
     {% if current_user.is_authenticated and current_user == item.user %}
     <div>
@@ -21,6 +24,6 @@
 </div>
 {% endfor %}
 {% if current_user.is_authenticated %}
-    <a href="codes" class="btn btn-secondary">Добавить новость</a>
+    <a href="create_codes" class="btn btn-secondary">Добавить свой код</a>
 {% endif %}
 {% endblock %}
