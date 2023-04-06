@@ -1,0 +1,82 @@
+.wrapper{
+	min-height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+
+}
+
+.content{
+	flex: 1 1 auto;
+}
+
+.container{
+	max-width: 1200px;
+	margin: 0px auto;
+}
+
+.footer{
+	background-color: rgba(0, 33, 53, 0.1);
+}
+
+.footer_row{
+	display: flex;
+	height: 80px;
+	justify-content: center;
+	align-items: center;
+}
+
+.footer_text{
+	font-size: 14px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	opacity: 0.8;
+}
+
+.shapka{
+	background-color: rgba(255, 206, 0, 0.5);
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+}
+
+.shapka_body{
+	display: flex;
+	justify-content: space-between;
+	font-size: 18px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	align-items: center;
+}
+
+.logo1, .logo2, .about, .projects, .chat, .login{
+	color: black;
+}
+
+.logo{
+	display: flex;
+	min-width: 190px;
+	max-width: 190px;
+	text-align: center;
+	font-size: 22px;
+	margin-left: 20px;
+	margin-right: 30px;
+}
+
+.logo2{
+	font-size: 15px;
+}
+
+.logo1:first-letter{
+	color: red;
+	font-size: 24px;
+}
+
+.menu{
+	margin-right: 20px;
+	margin-left: 30px;
+	display: flex;
+	flex: 1 1 auto;
+	max-width: 650px;
+	justify-content: space-between;
+}
