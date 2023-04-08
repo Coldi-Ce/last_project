@@ -3,42 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-        <title>{{ title }}</title>
-        <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="../static/css/default.css">
-        <link rel="stylesheet" href="../static/css/base.css">
-        <link rel="icon" href="../static/img/favicon.svg" type="image/x-icon">
-    </head>
-    <body>
-        <div class="wrapper">
-            <header class="content">
-                <div class="shapka">
-                    <div class="container">
-                        <div class="shapka_body">
-                            <div class="logo">
-                                <a href="/" class="logo1">Yandex Lyceum <span class="logo2">For Students</span></a>
-                            </div>
-                            <div class="menu">
-                                <a href="/about" class="about">О нас</a>
-                                <a href="/projects" class="projects">Выставка</a>
-                                <a href="/chat" class="chat">Чат</a>
-                                <a href="/autorization" class="login">Войти</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-            <% block body %>
-            <% endblock %>
-            <footer class="footer">
+    <title>{{ title }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/default.css">
+    <link rel="stylesheet" href="../static/css/base.css">
+    <link rel="icon" href="../static/img/favicon.svg" type="image/x-icon">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="content">
+            <div class="shapka">
                 <div class="container">
-                    <div class="footer_row">
-                        <div class="footer_text">
-                            Разработчики: Волков Матвей, Кудинов Роман
+                    <div class="shapka_body">
+                        <div class="logo">
+                            <a href="/" class="logo1">Yandex Lyceum <span class="logo2">For Students</span></a>
+                        </div>
+                        <div class="menu">
+                            <a href="#title_id" class="about">О нас</a>
+                            <a href="/projects" class="projects">Выставка</a>
+                            <a href="/chat" class="chat">Чат</a>
+                            <a href="/autorization" class="login">Войти</a>
                         </div>
                     </div>
                 </div>
-            </footer>
-        </div>
-    </body>
+            </div>
+        </header>
+        {% block content %}{% endblock %}
+        <footer class="footer">
+            <div class="container">
+                <div class="footer_row">
+                    <div class="footer_text">
+                        Разработчики: Волков Матвей, Кудинов Роман
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
 </html>
