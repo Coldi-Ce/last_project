@@ -26,6 +26,11 @@ def load_user(user_id):
 
 
 
+
+@app.route("/")
+def c():
+    return render_template("main.html")
+
 @app.route("/codes")
 def code():
     db_sess = db_session.create_session()
