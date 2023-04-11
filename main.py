@@ -29,7 +29,8 @@ def load_user(user_id):
 
 @app.route("/")
 def c():
-    return render_template("main.html")
+    return render_template("main.html", title="Главная")
+
 
 @app.route("/codes")
 def code():
@@ -40,6 +41,7 @@ def code():
     else:
         codes = db_sess.query(Codes).filter(Codes.is_private != True)
     return render_template("code.html", codes=codes)
+
 
 @app.route("/topics")
 def topics():
@@ -83,6 +85,7 @@ def reqister():
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form)
 
+
 @app.route("/cookie_test")
 def cookie_test():
     visits_count = int(request.cookies.get("visits_count", 0))
@@ -97,6 +100,7 @@ def cookie_test():
         res.set_cookie("visits_count", '1',
                        max_age=60 * 60 * 24 * 365 * 2)
     return res
+
 
 @app.route("/session_test")
 def session_test():
@@ -119,7 +123,6 @@ def login():
                                message="Неправильный логин или пароль",
                                form=form)
     return render_template('login.html', title='Авторизация', form=form)
-
 
 
 @app.route('/logout')
@@ -147,7 +150,6 @@ def ed_wt(id):
 def main():
     db_session.global_init("db/frprgrms.db")
     app.run(host="127.0.0.1", port=8080)
-
 
 
 if __name__ == '__main__':
