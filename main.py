@@ -6,6 +6,7 @@ from data.users import User
 from data.Topic import Topic
 import datetime
 
+from forms.code import CodeForm
 from forms.user import RegisterForm, LoginForm
 
 from data import db_session
@@ -140,6 +141,36 @@ def ed_wt(id):
 
 
 
+@app.route('/create/code', methods=['GET', 'POST'])
+@login_required
+def crc():
+    form = CodeForm()
+    if form.validate_on_submit():
+        db_sess = db_session.create_session()
+        to = db_sess.query(Topic).filter(Topic.name == form.top.data).first()
+        if to:
+            coode = Codes()
+            coode.script = form.script.data
+            coode.title = form.name.data
+            coode.topic = to
+            current_user.codes.append(coode)
+            db_sess.merge(current_user)
+            db_sess.commit()
+            return redirect('/')
+        else:
+            to = Topic()
+            to.name = form.top.data
+            coode = Codes()
+            coode.script = form.script.data
+            coode.title = form.name.data
+            coode.topic = to
+            current_user.codes.append(coode)
+            db_sess.merge(current_user)
+            db_sess.commit()
+            return redirect('/')
+
+    return render_template('news.html', title='Добавление новости',
+                            form=form)
 
 
 
