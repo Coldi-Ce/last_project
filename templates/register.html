@@ -13,18 +13,56 @@
 	<div class="wrapper">
 		<div class="log_in">
 			<div class="container">
-				<form class="window", method="post">
-					<div class="title">Регистрация</div>
-					<input type="email" class="name" placeholder="Введите адрес почты:">
-					<input type="password" class="password" placeholder="Введите пароль:">
-					<div class="sex">
-						<div class="choose_sex">Укажите пол</div>
-						<div class="male"><input name="form_group" type="radio">  Мужской</div>
-						<div class="female"><input name="form_group" type="radio">  Женский</div>
+				<form class="window" action="" method="post" novalidate>
+					{{ form.hidden_tag() }}
+					<div class="reg">Регистрация</div>
+					<div>
+						<div>
+							{{ form.email(class="email", placeholder="Введите email:") }}
+						</div>
+						{% for error in form.email.errors %}
+							<div class="alert_danger" role="alert">{{ error }}</div>
+						{% endfor %}
 					</div>
-					<button type="submit" class="enter">Зарегистрироваться</button>
+					<div>
+						<div>
+							{{ form.password(class="password", placeholder="Введите пароль:") }}
+						</div>
+						{% for error in form.password.errors %}
+							<div class="alert_danger" role="alert">{{ error }}</div>
+						{% endfor %}
+					</div>
+					<div>
+						<div>
+							{{ form.password_again(class='password_again', placeholder="Подтвердите пароль:") }}
+						</div>
+						{% for error in form.password.erros %}
+							<div class="alert_danger" role="alert">{{ error }}</div>
+						{% endfor %}
+					</div>
+					<div>
+						<div>
+							{{ form.name(class="name", placeholder="Введите ваше имя:") }}
+						</div>
+						{% for error in form.name.errors %}
+							<div class="alert_danger" role="alert">{{ error }}</div>
+						{% endfor %}
+					</div>
+					<div>
+						<div>
+							{{ form.about(class="about", placeholder="Расскажите о себе:")}}
+						</div>
+						{% for error in form.about.errors %}
+							<div class="alert_danger" role="alert">{{ error }}</div>
+						{% endfor %}
+					</div>
+					<div>
+						<div>
+							{{ form.submit(class="submit") }}
+						</div>
+					</div>
 				</form>
-				<div class="reg">Уже есть аккаунт? <a class="reg_link" href="/login">Войти</a>.</div>
+				<div class="reg_log">Уже есть аккаунт? <a class="reg_link" href="/login">Войти</a>.</div>
 			</div>
 		</div>
 	</div>

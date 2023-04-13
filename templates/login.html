@@ -13,13 +13,37 @@
 	<div class="wrapper">
 		<div class="log_in">
 			<div class="container">
-				<form class="window", method="post">
-					<div class="title">Вход</div>
-					<input type="email" class="name" placeholder="Введите адрес почты:">
-					<input type="password" class="password" placeholder="Введите пароль:">
-					<button type="submit" class="enter">Войти</button>
+				<form class="window" action="" method="post" novalidate>
+					{{ form.hidden_tag() }}
+					<div class="reg">Войти</div>
+					<div>
+						<div>
+							{{ form.email(class="email", placeholder="Введите email:") }}
+						</div>
+						{% for error in form.email.errors %}
+							<div class="alert_danger" role="alert">{{ error }}</div>
+						{% endfor %}
+					</div>
+					<div>
+						<div>
+							{{ form.password(class="password", placeholder="Введите пароль:") }}
+						</div>
+						{% for error in form.password.errors %}
+							<div class="alert_danger" role="alert">{{ error }}</div>
+						{% endfor %}
+					</div>
+					<div>
+						<div>
+							{{ form.remember_me }}<span class="remember">Запомнить меня</span>
+						</div>
+					</div>
+					<div>
+						<div>
+							{{ form.submit(class="submit") }}
+						</div>
+					</div>
 				</form>
-				<div class="reg">Еще нет аккаунта? <a class="reg_link" href="/register">Зарегистрироваться</a>.</div>
+				<div class="reg_log">Еще нет аккаунта? <a class="reg_link" href="/register">Зарегистрироваться</a>.</div>
 			</div>
 		</div>
 	</div>
