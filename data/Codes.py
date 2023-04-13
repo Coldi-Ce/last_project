@@ -2,7 +2,7 @@ import datetime
 import sqlalchemy
 from sqlalchemy import orm
 from sqlalchemy_serializer import SerializerMixin
-from db_session import SqlAlchemyBase
+from .db_session import SqlAlchemyBase
 
 
 class Codes(SqlAlchemyBase, SerializerMixin):
@@ -16,9 +16,9 @@ class Codes(SqlAlchemyBase, SerializerMixin):
                                      default=datetime.datetime.now)
     is_private = sqlalchemy.Column(sqlalchemy.Boolean, default=True)
 
-    mark = sqlalchemy.Column(sqlalchemy.DECIMAL,default=0)
+    mark = sqlalchemy.Column(sqlalchemy.DECIMAL, default=0)
 
-    count = sqlalchemy.Column(sqlalchemy.Integer,default=0)
+    count = sqlalchemy.Column(sqlalchemy.Integer, default=0)
 
     user_id = sqlalchemy.Column(sqlalchemy.Integer,
                                 sqlalchemy.ForeignKey("users.id"))
