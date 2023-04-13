@@ -1,0 +1,97 @@
+.wrapper{
+	display: flex;
+	min-height: 100%;
+	overflow: hidden;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	margin: 0px auto;
+	justify-content: center;
+	background-image: url('../img/bg.jpg');
+}
+
+.log_in{
+	flex: 0 1 auto;
+}
+
+.container{
+	max-width: 400px;
+	margin: 0px auto;
+	max-height: 500px;
+}
+
+.window{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 500px;
+	border: 2px solid rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	flex: 1 1 auto;
+	align-items: center;
+	background-color: white;
+}
+
+.name{
+	padding-left: 30px;
+	padding-right: 30px;
+	min-height: 50px;
+	font-size: 18px;
+	margin-top: 30px;
+	width: 380px;
+	border-radius: 10px;
+	max-width: 300px;
+	min-width: 300px;
+
+}
+
+.password{
+	padding-left: 30px;
+	padding-right: 30px;
+	min-height: 50px;
+	font-size: 18px;
+	margin-top: -50px;
+	max-width: 300px;
+	border-radius: 10px;
+	min-width: 300px;
+}
+
+.enter{
+	min-height: 50px;
+	width: 200px;
+	margin: 0px auto;
+	font-size: 20px;
+	font-weight: 500;
+	margin-bottom: 20px;
+	background-color: white;
+	transition-duration: 1s;
+}
+
+.title{
+	margin: 0px auto;
+	margin-top: 50px;
+	font-size: 35px;
+	font-weight: 700;
+}
+
+.enter:hover{
+	text-shadow: 1px 1px 1px black;
+}
+
+.reg{
+	margin-top: 10px;
+	font-size: 15px;
+	text-align: center;
+}
+
+.name:focus{
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.password:focus{
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.reg_link{
+	color: black;
+	text-decoration: underline;
+}
