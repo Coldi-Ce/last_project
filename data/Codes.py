@@ -13,7 +13,7 @@ class Codes(SqlAlchemyBase, SerializerMixin):
     title = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     script = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     created_date = sqlalchemy.Column(sqlalchemy.DateTime,
-                                     default=datetime.datetime.now)
+                                     default=datetime.date.today())
     is_private = sqlalchemy.Column(sqlalchemy.Boolean, default=True)
 
     mark = sqlalchemy.Column(sqlalchemy.DECIMAL, default=0)
