@@ -41,7 +41,7 @@ def code():
             (Codes.user == current_user) | (Codes.is_private != True))
     else:
         codes = db_sess.query(Codes).filter(Codes.is_private != True)
-    return render_template("code.html", codes=codes)
+    return render_template("code.html", codes=codes, title="Выставка")
 
 
 @app.route("/topics")
@@ -180,7 +180,7 @@ def crc():
 
 def main():
     db_session.global_init("db/frprgrms.db")
-    app.run(host="127.0.0.1", port=8080)
+    app.run(host="127.0.0.1", port=8080, debug=True)
 
 
 if __name__ == '__main__':

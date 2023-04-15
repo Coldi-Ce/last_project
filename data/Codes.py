@@ -12,7 +12,7 @@ class Codes(SqlAlchemyBase, SerializerMixin):
                            primary_key=True, autoincrement=True)
     title = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     script = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-    created_date = sqlalchemy.Column(sqlalchemy.DateTime,
+    created_date = sqlalchemy.Column(sqlalchemy.Date,
                                      default=datetime.date.today())
     is_private = sqlalchemy.Column(sqlalchemy.Boolean, default=True)
 
