@@ -5,6 +5,7 @@ from wtforms.validators import DataRequired
 
 class CodeForm(FlaskForm):
     name = StringField('Название', validators=[DataRequired()])
+    info = StringField('', validators=[DataRequired()])
     script = StringField('Код программы', validators=[DataRequired()])
     top = StringField('Основная тема', validators=[DataRequired()])
     submit = SubmitField('Создать')
