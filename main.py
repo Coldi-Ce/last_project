@@ -87,28 +87,7 @@ def reqister():
     return render_template('register.html', title='Регистрация', form=form)
 
 
-@app.route("/cookie_test")
-def cookie_test():
-    visits_count = int(request.cookies.get("visits_count", 0))
-    if visits_count:
-        res = make_response(
-            f"Вы пришли на эту страницу {visits_count + 1} раз")
-        res.set_cookie("visits_count", str(visits_count + 1),
-                       max_age=60 * 60 * 24 * 365 * 2)
-    else:
-        res = make_response(
-            "Вы пришли на эту страницу в первый раз за последние 2 года")
-        res.set_cookie("visits_count", '1',
-                       max_age=60 * 60 * 24 * 365 * 2)
-    return res
 
-
-@app.route("/session_test")
-def session_test():
-    visits_count = session.get('visits_count', 0)
-    session['visits_count'] = visits_count + 1
-    return make_response(
-        f"Вы пришли на эту страницу {visits_count + 1} раз")
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -137,11 +116,10 @@ def logout():
 def ed_wt(id):
     db_sess = db_session.create_session()
     code = db_sess.query(Codes).filter(Codes.id == id).first()
-    with open("code.py", "w") as myfile:
+    with open("co.py", "w") as myfile:
         myfile.write(code.script)
 
     return render_template('.html', title=f'код{id}')
-
 
 
 @app.route('/create/code', methods=['GET', 'POST'])
