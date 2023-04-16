@@ -78,7 +78,8 @@ def coded(id):
 def us(id):
     db_sess = db_session.create_session()
     if current_user.is_authenticated and (db_sess.query(User).filter(User.id == id).first() == current_user):
-        return render_template("user.html", user=db_sess.query(User).filter(User.id == id).first())
+        return render_template("user.html", user=db_sess.query(User).filter(User.id == id).first(),
+                               title='Личный кабинет')
     return redirect('/')
 
 
