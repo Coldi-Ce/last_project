@@ -149,6 +149,7 @@ def crc():
             coode = Codes()
             coode.script = form.script.data
             coode.title = form.name.data
+            coode.information = form.info.data
             coode.topic = to
             current_user.codes.append(coode)
             db_sess.merge(current_user)
@@ -158,6 +159,7 @@ def crc():
             to = Topic()
             to.name = form.top.data
             coode = Codes()
+            coode.information = form.info.data
             coode.script = form.script.data
             coode.title = form.name.data
             coode.topic = to
