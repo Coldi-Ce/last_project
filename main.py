@@ -7,6 +7,7 @@ from data.Topic import Topic
 import datetime
 
 from forms.code import CodeForm
+from forms.mark import MarkForm
 from forms.user import RegisterForm, LoginForm
 
 from data import db_session
@@ -51,6 +52,39 @@ def topics():
     return render_template("topics.html", topics=topics)
 
 
+
+@app.route('/code/<int:id>', methods=['GET', 'POST'])
+def coded(id):
+    db_sess = db_session.create_session()
+    code = db_sess.query(Codes).filter(Codes.id == id).first()
+    if not code:
+        return redirect('/codes')
+    else:
+        form = MarkForm
+        if form.validate_on_submit():
+            code.mark += form.ma.data
+            code.count += 1
+
+        with open("co.py", "w") as myfile:
+            myfile.write(code.script)
+        if code.count != 0:
+            avg = code.mark / code.count
+        else:
+            avg = 0
+        return render_template('.html', title=f'код{id}', code=code, form=form, mark=avg)
+
+
+
+
+@app.route('/user/<int:id>')
+def us(id):
+    db_sess = db_session.create_session()
+    if current_user.is_authenticated and (db_sess.query(User).filter(User.id == id).first() == current_user):
+        return render_template("user.html", user=db_sess.query(User).filter(User.id == id).first())
+    return redirect('/')
+
+
+
 @app.route('/topic/<int:id>')
 def top(id):
     db_sess = db_session.create_session()
@@ -87,28 +121,7 @@ def reqister():
     return render_template('register.html', title='Регистрация', form=form)
 
 
-@app.route("/cookie_test")
-def cookie_test():
-    visits_count = int(request.cookies.get("visits_count", 0))
-    if visits_count:
-        res = make_response(
-            f"Вы пришли на эту страницу {visits_count + 1} раз")
-        res.set_cookie("visits_count", str(visits_count + 1),
-                       max_age=60 * 60 * 24 * 365 * 2)
-    else:
-        res = make_response(
-            "Вы пришли на эту страницу в первый раз за последние 2 года")
-        res.set_cookie("visits_count", '1',
-                       max_age=60 * 60 * 24 * 365 * 2)
-    return res
 
-
-@app.route("/session_test")
-def session_test():
-    visits_count = session.get('visits_count', 0)
-    session['visits_count'] = visits_count + 1
-    return make_response(
-        f"Вы пришли на эту страницу {visits_count + 1} раз")
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -133,14 +146,6 @@ def logout():
     return redirect("/")
 
 
-@app.route('/codes/<int:id>', methods=['GET', 'POST'])
-def ed_wt(id):
-    db_sess = db_session.create_session()
-    code = db_sess.query(Codes).filter(Codes.id == id).first()
-    with open("code.py", "w") as myfile:
-        myfile.write(code.script)
-
-    return render_template('.html', title=f'код{id}')
 
 
 
