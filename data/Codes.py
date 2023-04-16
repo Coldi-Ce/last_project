@@ -23,6 +23,7 @@ class Codes(SqlAlchemyBase, SerializerMixin):
 
     user_id = sqlalchemy.Column(sqlalchemy.Integer,
                                 sqlalchemy.ForeignKey("users.id"))
+    information = sqlalchemy.Column(sqlalchemy.String, nullable=True)
     user = orm.relationship('User')
     topic = orm.relationship("Topic",
                                   secondary="association",

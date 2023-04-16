@@ -22,7 +22,11 @@
                             <a href="/" class="about">О нас</a>
                             <a href="/codes" class="projects">Выставка</a>
                             <a href="/chat" class="chat">Чат</a>
-                            <a href="/login" class="login">Войти</a>
+                            {% if user_id == 0 %}
+                            <a href="/login" class="login">Войти<a>
+                            {% else %}
+                            <a href="/user/{{ user_id }}" class="login">Аккаунт</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

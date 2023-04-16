@@ -25,13 +25,14 @@ def load_user(user_id):
     return db_sess.query(User).get(user_id)
 
 
-
-
-
-
 @app.route("/")
 def c():
-    return render_template("main.html", title="Главная")
+    db_sess = db_session.create_session()
+    if current_user.is_authenticated:
+        user_id = current_user.id
+    else:
+        user_id = 0
+    return render_template("main.html", user_id=user_id, title="Главная")
 
 
 @app.route("/codes")
@@ -50,7 +51,6 @@ def topics():
     db_sess = db_session.create_session()
     topics = db_sess.query(Topic).filter()
     return render_template("topics.html", topics=topics)
-
 
 
 @app.route('/code/<int:id>', methods=['GET', 'POST'])
@@ -74,15 +74,12 @@ def coded(id):
         return render_template('.html', title=f'код{id}', code=code, form=form, mark=avg)
 
 
-
-
 @app.route('/user/<int:id>')
 def us(id):
     db_sess = db_session.create_session()
     if current_user.is_authenticated and (db_sess.query(User).filter(User.id == id).first() == current_user):
         return render_template("user.html", user=db_sess.query(User).filter(User.id == id).first())
     return redirect('/')
-
 
 
 @app.route('/topic/<int:id>')
@@ -146,9 +143,6 @@ def logout():
     return redirect("/")
 
 
-
-
-
 @app.route('/create/code', methods=['GET', 'POST'])
 @login_required
 def crc():
@@ -181,8 +175,6 @@ def crc():
 
     return render_template('news.html', title='Добавление новости',
                             form=form)
-
-
 
 
 def main():
