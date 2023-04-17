@@ -1,10 +1,20 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 
 {% block content %}
-<div class="content">
-	<div class="container">
-		
-	</div>
+<div class="account_main_body">
+    <div class="container">
+        <div class="account_box">
+            <div class="account_name"><span>Имя:</span> {{ user.name }}</div>
+            <div class="account_email"><span>Email:</span> {{ user.email }}</div>
+            <div class="account_created_date"><span>Дата создания:</span> {{ user.created_date }}</div>
+            <div class="account_about"><span>О себе:</span><div class="account_about_text">{{ user.about }}</div></div>
+        </div>
+        <div class="logout">
+            <form action="/logout">
+                <button class="logout_button">Выйти из аккаунта</button>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}

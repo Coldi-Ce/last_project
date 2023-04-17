@@ -17,7 +17,7 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     email = sqlalchemy.Column(sqlalchemy.String,
                               index=True, unique=True, nullable=True)
     hashed_password = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-    created_date = sqlalchemy.Column(sqlalchemy.DateTime,
+    created_date = sqlalchemy.Column(sqlalchemy.Date,
                                      default=datetime.date.today())
     codes = orm.relationship("Codes", back_populates='user')
 

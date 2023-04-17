@@ -41,9 +41,11 @@ def code():
     if current_user.is_authenticated:
         codes = db_sess.query(Codes).filter(
             (Codes.user == current_user) | (Codes.is_private != True))
+        user_id = current_user.id
     else:
         codes = db_sess.query(Codes).filter(Codes.is_private != True)
-    return render_template("code.html", codes=codes, title="Выставка")
+        user_id = 0
+    return render_template("code.html", codes=codes, title="Выставка", user_id=user_id)
 
 
 @app.route("/topics")
@@ -53,14 +55,14 @@ def topics():
     return render_template("topics.html", topics=topics)
 
 
-@app.route('/code/<int:id>', methods=['GET', 'POST'])
+@app.route('/codes/<int:id>', methods=['GET', 'POST'])
 def coded(id):
     db_sess = db_session.create_session()
     code = db_sess.query(Codes).filter(Codes.id == id).first()
     if not code:
         return redirect('/codes')
     else:
-        form = MarkForm
+        form = MarkForm()
         if form.validate_on_submit():
             code.mark += form.ma.data
             code.count += 1
@@ -71,7 +73,7 @@ def coded(id):
             avg = code.mark / code.count
         else:
             avg = 0
-        return render_template('.html', title=f'код{id}', code=code, form=form, mark=avg)
+        return render_template('project.html', title=f'{code.title}', code=code, form=form, mark=avg)
 
 
 @app.route('/user/<int:id>')
@@ -117,9 +119,6 @@ def reqister():
         db_sess.commit()
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form)
-
-
-
 
 
 @app.route('/login', methods=['GET', 'POST'])
