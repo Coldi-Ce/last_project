@@ -143,7 +143,7 @@ def logout():
     return redirect("/")
 
 
-@app.route('/create/code', methods=['GET', 'POST'])
+@app.route('/create_codes', methods=['GET', 'POST'])
 @login_required
 def crc():
     form = CodeForm()
@@ -173,8 +173,7 @@ def crc():
             db_sess.commit()
             return redirect('/')
 
-    return render_template('news.html', title='Добавление новости',
-                            form=form)
+    return render_template('news.html', title='Добавление новости', form=form)
 
 
 def main():

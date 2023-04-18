@@ -8,6 +8,7 @@ html{
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	font-family: 'Montserrat', sans-serif;
 }
 
@@ -341,4 +342,24 @@ html{
 
 .account_box span{
 	font-weight: 700;
+}
+
+.code_body{
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	justify-content: center;
+	min-height: 100%;
+}
+
+.code_box{
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	justify-content: space-around;
+	border: 1px solid black;
+}
+
+.code_title{
+	border: 1px solid black;
 }
