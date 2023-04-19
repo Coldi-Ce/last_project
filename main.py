@@ -155,21 +155,24 @@ def crc():
             coode.script = form.script.data
             coode.title = form.name.data
             coode.information = form.info.data
-            coode.topic = to
-            current_user.codes.append(coode)
-            db_sess.merge(current_user)
+            to.codes.append(coode)
+            coode.user = current_user
+            db_sess.add(coode)
+            db_sess.merge(to)
             db_sess.commit()
             return redirect('/')
         else:
             to = Topic()
             to.name = form.top.data
+            db_sess.add(to)
             coode = Codes()
             coode.information = form.info.data
             coode.script = form.script.data
             coode.title = form.name.data
-            coode.topic = to
-            current_user.codes.append(coode)
-            db_sess.merge(current_user)
+            to.codes.append(coode)
+            coode.user = current_user
+            db_sess.add(coode)
+            db_sess.merge(to)
             db_sess.commit()
             return redirect('/')
 

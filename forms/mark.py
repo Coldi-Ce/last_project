@@ -4,5 +4,9 @@ from wtforms.validators import DataRequired
 
 
 class MarkForm(FlaskForm):
-    ma = StringField('Ваша оценка', validators=[DataRequired()])
+    one = BooleanField('Единица')
+    two = BooleanField('Двойка')
+    three = BooleanField('Тройка')
+    four = BooleanField('Четверка')
+    five = BooleanField('Пятерка')
     submit = SubmitField('Поставить')
