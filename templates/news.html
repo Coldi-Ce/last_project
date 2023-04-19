@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="code_body">
+    <div class="container">
+    	<form action="" class="code_box" method="post" novalidate>
+            <div class="form_title">
+                Добавить проект
+            </div>
+    		<div>
+    			<div>
+    				{{ form.name(class="code_title", placeholder="Название:") }}
+    			</div>
+    			{% for error in form.name.errors %}
+    				<div class="alert_danger" role="alert">{{ error }}</div>
+    			{% endfor %}
+    		</div>
+    		<div>
+    			<div>
+    				{{ form.top(class="form_top", placeholder="Основная тема:") }}
+    			</div>
+    			{% for error in form.top.errors %}
+    				<div class="alert_danger" role="alert">{{ error }}</div>
+    			{% endfor %}
+    		</div>
+    		<div>
+    			<div>
+    				{{ form.info(class="code_info", placeholder="Описание:") }}
+    			</div>
+    			{% for error in form.info.errors %}
+    				<div class="alert_danger" role="alert">{{ error }}</div>
+    			{% endfor %}
+    		</div>
+    		<div>
+    			<div>
+    				{{ form.script(class="code_script", placeholder="Код программы:") }}
+    			</div>
+    			{% for error in form.script.errors %}
+    				<div class="alert_danger" role="alert">{{ error }}</div>
+    			{% endfor %}
+    		</div>
+    		<div>
+    			<div>
+    				{{ form.submit(class="code_submit") }}
+    			</div>
+    		</div>
+    	</form>
+    </div>
+</div>
+{% endblock %}
