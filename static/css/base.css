@@ -472,3 +472,32 @@ html{
 	font-weight: 700;
 	margin-bottom: 10px;
 }
+
+.download{
+	border: 1px solid black;
+	min-width: 200px;
+	min-height: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	text-align: center;
+	margin: 0 auto;
+	border-radius: 10px;
+	transition-duration: 1s;
+}
+
+.download_text{
+	font-size: 20px;
+	font-weight: 700;
+	color: black;
+	transition-duration: 1s;
+}
+
+.download:hover{
+	background-color: black;
+}
+
+.download_text:hover{
+	color: white;
+}
