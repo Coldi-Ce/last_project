@@ -1,4 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="project_body">
+	<div class="container">
+		<form action="" method="get" class="project_box" novalidate>
+			<div class="project_title">
+				Название: «{{ code.title }}»
+			</div>
+			<div class="project_date">
+				Дата создания: {{ code.created_date }}
+			</div>
+			<div class="project_info">
+				<p class="project_info_text">Описание:</p>
+				{{ code.information }}
+			</div>
+			<div class="project_script">
+				<p class="project_script_text">Код:</p>
+				{{ code.script }}
+			</div>
+		</form>
+	</div>
+</div>
 {% endblock %}

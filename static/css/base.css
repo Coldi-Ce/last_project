@@ -422,3 +422,53 @@ html{
 	font-weight: 700;
 	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
+
+.project_body{
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.project_box{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: left;
+	width: 600px;
+	min-height: 700px;
+	text-align: justify;
+}
+
+.project_title{
+	font-size: 40px;
+	font-weight: 700;
+}
+
+.project_date{
+	font-size: 30px;
+	font-weight: 700;
+}
+
+.project_info{
+	font-size: 15px;
+	font-weight: 500;
+}
+
+.project_info_text{
+	font-size: 30px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+.project_script{
+	font-size: 15px;
+	font-weight: 500;
+}
+
+.project_script_text{
+	font-size: 30px;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
